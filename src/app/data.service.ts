@@ -5,10 +5,18 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class DataService {
-  _url: string = "https://jsonplaceholder.typicode.com/users";
+  _baseUrl: string = "https://jsonplaceholder.typicode.com";
   constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.http.get(this._url);
+    return this.http.get(`${this._baseUrl}/users`);
+  }
+
+  getUser(userId) {
+    return this.http.get(`${this._baseUrl}/users/${userId}`);
+  }
+
+  getPosts() {
+    return this.http.get(`${this._baseUrl}/posts`);
   }
 }
